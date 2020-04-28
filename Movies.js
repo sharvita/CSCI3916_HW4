@@ -11,7 +11,7 @@ mongoose.set('useCreateIndex', true);
 var ActorSchema = new Schema({ ActorName: {type: String, required: true}, CharacterName: {type: String, required: true} })
 
 // movie schema
-var movieSchema = new Schema({
+var MovieSchema = new Schema({
     title: { type: String, required: true, index: { unique: true } },
     year: { type: Number, required: true },
     genre: {
@@ -22,11 +22,11 @@ var movieSchema = new Schema({
     actors: { type: [ActorSchema],
         validate: [ function(arr) {
             return arr.length >= 3
-        }, 'Actors should have at least 3 entries'],
+        }, 'Actors must contain at least 3 entries'],
         required: true
     },
-    image: { type: String }
+    imageUrl: { type: String }
 });
 
 // return the model
-module.exports = mongoose.model('Movie', movieSchema);
+module.exports = mongoose.model('Movie', MovieSchema);

@@ -187,7 +187,7 @@ router.route('/movies')
         movie.year = req.body.year;
         movie.genre = req.body.genre;
         movie.actors = req.body.actors;
-        movie.image = req.body.image;
+        movie.imageUrl = req.body.imageUrl;
         // save the movie
         movie.save(function(err) {
             if (err) {
@@ -216,11 +216,13 @@ router.route('/movies')
         });
     })
     .delete(authJwtController.isAuthenticated, function(req, res) {
+        console.log(req);
         Movie.findOneAndDelete({title: req.query.title}, function(err, movie) {
             if (err) {
                 res.json({success: false, message: err.message});
             }
             else if (movie == null) {
+                console.log(movie);
                 res.json({success: false, message: "Movie not found"});
             }
             else {
