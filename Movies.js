@@ -8,7 +8,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB, { useNewUrlParser: true } );
 mongoose.set('useCreateIndex', true);
 
-var ActorSchema = new Schema({ ActorName: {type: String, required: true}, CharacterName: {type: String, required: true} })
+var ActorSchema = new Schema({ actorName: {type: String, required: true}, characterName: {type: String, required: true} })
 
 // movie schema
 var MovieSchema = new Schema({

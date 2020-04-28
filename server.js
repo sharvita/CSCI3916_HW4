@@ -310,8 +310,8 @@ router.route('/reviews')
     })
     .post(authJwtController.isAuthenticated, function(req, res) {
         var review = new Review();
-        review.movie_title = req.body.movie_title;
         review.reviewer_name = req.user.username;
+        review.movie_title = req.body.title;
         review.quote = req.body.quote;
         review.rating = req.body.rating;
         // save the review
